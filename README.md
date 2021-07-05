@@ -1,4 +1,4 @@
-# A-simple-Fortran-hashtable-modulele
+# A-simple-Fortran-hashtable-module
 
 
 # Example:
