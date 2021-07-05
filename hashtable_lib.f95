@@ -106,7 +106,6 @@ end type hashtable
         xval(1:ival) = mytable%value(mytable%current_index, 1:ival)
     else
         print*,"'",xkey, "' not fund"
-        stop
     endif
     
     end subroutine get_value
@@ -131,7 +130,6 @@ end type hashtable
         mytable%value(mytable%current_index, 1:mytable%nvalues) = 0.0
     else
         print*,"'",xkey, "' not fund"
-        stop
     endif
     
     end subroutine delete_key
