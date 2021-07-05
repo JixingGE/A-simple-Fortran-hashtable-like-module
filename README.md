@@ -1,4 +1,4 @@
-# A-simple-Fortran-hashtable-module
+# A simple Fortran hash table module
 
 
 # Example:
