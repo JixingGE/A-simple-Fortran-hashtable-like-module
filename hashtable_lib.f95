@@ -1,6 +1,7 @@
 module hashtable_lib
 implicit none
 integer, parameter :: nchar=10, nreal=8
+logical :: print_warning=.False.
 
 type hashtable
     integer :: nkeys, nvalues
@@ -12,7 +13,8 @@ type hashtable
     PROCEDURE  :: init => init_hashtable
     PROCEDURE  :: add => add_key_and_value
     PROCEDURE  :: get => get_value
-    PROCEDURE  :: del => delete_key           
+    PROCEDURE  :: del => delete_key  
+    PROCEDURE  :: list => list_keys          
 end type hashtable
 
     contains
@@ -49,11 +51,14 @@ end type hashtable
             mytable%ifound=1
             exit
         endif
+
+    enddo
+    
+    do i=1,mytable%nkeys
         if ( trim(mytable%key(i))=="") then
             mytable%ifull=0
         endif
     enddo
-    
     if (mytable%ifull==1) then
         print*,'Key is full. "', trim(xkey), '" cannot be added.' 
         print*,'Max. number=', mytable%nkeys
@@ -67,7 +72,10 @@ end type hashtable
                 exit
            endif
        enddo
+    elseif (mytable%ifound==1) then
+       if (print_warning) print*,"'", trim(xkey),"' existes. Overwritten."
     endif
+    
     mytable%key(mytable%current_index) = xkey
     mytable%value(mytable%current_index, 1:nval) = xval
     end subroutine add_key_and_value	
@@ -127,6 +135,21 @@ end type hashtable
     endif
     
     end subroutine delete_key
+    
+    !!!++++++++++++++++++++++++++++++++++++++
+    subroutine list_keys(mytable)
+    implicit none
+    integer :: i
+    CLASS(hashtable), intent(inout) ::   mytable
+    
+    mytable%ifound=0
+    do i=1,mytable%nkeys
+        if ( trim(mytable%key(i))/="") then
+            print*,i, trim(mytable%key(i))
+        endif
+    enddo
+    
+    end subroutine list_keys
     
 end module hashtable_lib
 
