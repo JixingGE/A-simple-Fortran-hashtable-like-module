@@ -1,7 +1,7 @@
 # A-simple-Fortran-hashtable-modulele
-Hashtable module written in Fortran. With it, keys and corresponding arrarys can be added.
 
-Example:
+
+# Example:
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -35,7 +35,7 @@ program test
 end
 ```
 
-Output:
+# Output:
 
 ```text
    1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        5.0000000000000000     
