@@ -55,7 +55,7 @@ end type hashtable
     if (mytable%ifull==1) then
         print*,'Key is full. "', trim(xkey), '" cannot be added.' 
         print*,'Max. number=', mytable%nkeys
-        !!stop
+        stop
     endif
     
     if (mytable%ifound==0) then
@@ -95,7 +95,7 @@ end type hashtable
         xval(1:ival) = mytable%value(mytable%current_index, 1:ival)
     else
         print*,"'",xkey, "' not fund"
-        !!stop
+        stop
     endif
     
     end subroutine get_value
