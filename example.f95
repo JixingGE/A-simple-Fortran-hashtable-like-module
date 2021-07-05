@@ -34,7 +34,8 @@ program test
     call mytable%get('H2', y)
     print*,y
     
-    call mytable%add('NH3', x, 5)
     call mytable%get('xxxx', y)
+    call mytable%add('NH3', x, 5)
+    
 end
 
