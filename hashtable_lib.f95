@@ -12,11 +12,12 @@ type hashtable
     PROCEDURE  :: init => init_hashtable
     PROCEDURE  :: add => add_key_and_value
     PROCEDURE  :: get => get_value
-                
+    PROCEDURE  :: del => delete_key           
 end type hashtable
 
     contains
 
+    !!!+++++++++++++++++++++++++++++++++++++++++++++++
     subroutine init_hashtable(mytable, nkeys, nvalues)
     implicit none
     integer, intent(in) :: nkeys, nvalues
@@ -24,13 +25,14 @@ end type hashtable
     
     mytable%nkeys = nkeys
     mytable%nvalues = nvalues
-    allocate(mytable%key(mytable%nkeys), mytable%value(mytable%nkeys, mytable%nvalues) )
+    allocate(mytable%key(mytable%nkeys))
+    allocate(mytable%value(mytable%nkeys, mytable%nvalues))
     mytable%key=""
     mytable%value=0.0d0
     mytable%current_index=0
     end subroutine init_hashtable
 
-
+    !!!++++++++++++++++++++++++++++++++++++++++++++++++++++
     subroutine add_key_and_value(mytable, xkey, xval, nval)
     implicit none
     integer :: i
@@ -70,6 +72,7 @@ end type hashtable
     mytable%value(mytable%current_index, 1:nval) = xval
     end subroutine add_key_and_value	
 
+    !!!++++++++++++++++++++++++++++++++++++++
     subroutine get_value(mytable, xkey, xval)
     implicit none
     integer :: i, nval, ival
@@ -100,6 +103,30 @@ end type hashtable
     
     end subroutine get_value
 
-
+    !!!++++++++++++++++++++++++++++++++++++++
+    subroutine delete_key(mytable, xkey)
+    implicit none
+    integer :: i
+    character(len=*),intent(in) :: xkey
+    CLASS(hashtable), intent(inout) ::   mytable
+    
+    mytable%ifound=0
+    do i=1,mytable%nkeys
+        if ( trim(mytable%key(i))==trim(xkey)) then
+            mytable%current_index = i
+            mytable%ifound=1
+            exit
+        endif
+    enddo
+    if (mytable%ifound==1) then
+        mytable%key(mytable%current_index)=""
+        mytable%value(mytable%current_index, 1:mytable%nvalues) = 0.0
+    else
+        print*,"'",xkey, "' not fund"
+        stop
+    endif
+    
+    end subroutine delete_key
+    
 end module hashtable_lib
 
