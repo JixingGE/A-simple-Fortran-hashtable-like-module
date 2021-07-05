@@ -3,9 +3,6 @@
 
 # Example:
 
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 ```Fortran
 program test
     use hashtable_lib
