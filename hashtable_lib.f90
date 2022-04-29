@@ -105,7 +105,7 @@ end type hashtable
         enddo
         xval(1:ival) = mytable%value(mytable%current_index, 1:ival)
     else
-        print*,"'",xkey, "' not fund"
+        print*,"'",xkey, "' not found"
     endif
     
     end subroutine get_value
