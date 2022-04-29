@@ -38,7 +38,7 @@ end type hashtable
     subroutine add_key_and_value(mytable, xkey, xval)
     implicit none
     character(len=*),intent(in) :: xkey
-    real(nreal),intent(in) :: xval(nval)
+    real(nreal),intent(in) :: xval(:)
     CLASS(hashtable) , intent(inout) ::  mytable
     integer :: i, nval
     nval=size(xval)
