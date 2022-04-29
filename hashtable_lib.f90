@@ -35,13 +35,13 @@ end type hashtable
     end subroutine init_hashtable
 
     !!!++++++++++++++++++++++++++++++++++++++++++++++++++++
-    subroutine add_key_and_value(mytable, xkey, xval, nval)
+    subroutine add_key_and_value(mytable, xkey, xval)
     implicit none
-    integer :: i
     character(len=*),intent(in) :: xkey
-    integer, intent(in) :: nval
     real(nreal),intent(in) :: xval(nval)
     CLASS(hashtable) , intent(inout) ::  mytable
+    integer :: i, nval
+    nval=size(xval)
     
     mytable%ifound=0
     mytable%ifull=1
