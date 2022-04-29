@@ -61,7 +61,7 @@ end
            2 CO
            3 H2O
    1.0000000000000000        2.0000000000000000        3.0000000000000000        4.0000000000000000        5.0000000000000000     
- 'xxxx' not fund
+ 'xxxx' not found
  Key is full. "NH3" cannot be added.
  Max. number=           3
 ```
