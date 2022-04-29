@@ -98,11 +98,11 @@ end type hashtable
     enddo
     if (mytable%ifound==1) then
         do i=1,mytable%nvalues
-            if (mytable%value(mytable%current_index, i)==0) then
-                ival = i-1
+            if (mytable%value(mytable%current_index, i)==0) then 
                 exit
             endif
         enddo
+        ival = i-1
         xval(1:ival) = mytable%value(mytable%current_index, 1:ival)
     else
         print*,"'",xkey, "' not found"
